@@ -16,6 +16,21 @@
     "use strict";
     /*jslint browser: true */
 
+    // progress callback
+    $.fn.startProgress = function(params){
+        var callback_url, progress_loader, random, polling_interval;
+        callback_url        = params.callback_url;
+        random              = params.random;
+        polling_interval    = params.polling_interval;
+        progress_loader     = $(this).percentageLoader({width : 100, height : 100, progress : 0.0, value : ''});
+
+        var id = setInterval(function(){
+            progress_callback(callback_url, progress_loader, random);
+        }, polling_interval);
+
+        return id;
+    }
+
     function progress_callback(callback_url, progress_obj, random){
         $.get(callback_url, {random: random}, function(data){
                 if( data != null ){
@@ -28,15 +43,10 @@
                     else if( data.status == 'completed'){
                         progress_obj.setProgress(1);
                     }
+                }else{
+                    progress_obj.setProgress(0);
                 }
             }
         );
     }
-
-    // progress callback
-    function start_progress_callback(callback_url, progress_obj, random, polling_interval){
-        setInterval(function(){
-            progress_callback(callback_url, progress_obj, random);
-        }, polling_interval);
-    }
-})
+}( jQuery ));
