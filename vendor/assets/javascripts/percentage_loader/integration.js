@@ -28,7 +28,7 @@
             progress_callback(callback_url, progress_loader, random);
         }, polling_interval);
 
-        return id;
+        return {progress_callback_id: id, progress_loader: progress_loader};
     }
 
     function progress_callback(callback_url, progress_obj, random){
