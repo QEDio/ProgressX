@@ -12,7 +12,7 @@ see the file license.txt that was included with the plugin bundle.
 /*global jQuery */
 
 (function ($) {
-    /* Strict mode for this plugin */
+    /* Strict mode for this plugins */
     "use strict";
     /*jslint browser: true */
 
