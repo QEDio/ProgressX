@@ -27,12 +27,20 @@ module ProgressX
         state.currently_will_finish_at = v
       end
 
+      def base_current_status_message=(msg)
+        state.current_status_message = msg
+      end
+
       def currently_at
         state.currently_at
       end
 
       def currently_will_finish_at
         state.currently_will_finish_at
+      end
+
+      def current_status_message
+        state.current_status_message
       end
 
       def state

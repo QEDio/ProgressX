@@ -19,17 +19,22 @@ module ProgressX
           alias :incf :inc_currently_will_finish_at
 
           def currently_at=(v)
-            base_currently_at = v
+            self.base_currently_at = v
             set_state
           end
 
           def currently_will_finish_at=(v)
-            base_currently_will_finish_at = v
+            self.base_currently_will_finish_at = v
+            set_state
+          end
+
+          def current_status_message=(msg)
+            self.base_current_status_message = msg
             set_state
           end
 
           def set_state(text = '')
-            at(state.currently_at, state.currently_will_finish_at, text)
+            at(state.currently_at, state.currently_will_finish_at, state.current_status_message)
           end
         end
       end

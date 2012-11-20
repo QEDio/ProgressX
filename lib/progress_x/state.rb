@@ -2,11 +2,12 @@
 
 module ProgressX
   class State
-    attr_accessor :currently_at, :currently_will_finish_at
+    attr_accessor :currently_at, :currently_will_finish_at, :current_status_message
 
     def initialize
       @currently_at                 = 0
       @currently_will_finish_at     = 100
+      @current_status_message       = ''
     end
 
     def inc_currently_at(v)
